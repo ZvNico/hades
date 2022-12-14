@@ -6,6 +6,7 @@ import {useState} from "react";
 import AddDispo from "./pages/AddDispo";
 import Dispos from "./pages/Dispos";
 import RDV from "./pages/RDV";
+import ChooseRDV from "./pages/ChooseRDV";
 
 const App = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -27,6 +28,7 @@ const App = () => {
                         <Route path={"add-dispo"} element={<AddDispo/>}/>
                         <Route path={"see-dispos"} element={<Dispos/>}/>
                         <Route path={"see-rdv"} element={<RDV/>}/>
+                        <Route path={"choose-rdv"} element={<ChooseRDV/>}/>
                     </Route>
                 </Routes>
             </Box>

@@ -7,3 +7,5 @@ export const users = [
     {role: "examinateur", firstName: "Erdanxela", lastName: "Bruniaux", id: 3},
     {role: "candidat", firstName: "Alexandre", lastName: "Bruniaux", id: 4},
 ]
+
+export const salles = ["A405", "A203", "B011", "C001", "E002", "A102"]

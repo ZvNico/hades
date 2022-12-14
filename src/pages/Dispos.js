@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import {Stack, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography} from "@mui/material";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography} from "@mui/material";
 import {days, months} from "../consts";
 
 const Dispos = () => {
@@ -8,27 +8,31 @@ const Dispos = () => {
         return {...dispo, date: new Date(dispo.date)}
     }).sort((a, b) => a.date > b.date)
     return (
-        <div>
-            <Typography variant={"h5"}>Vos disponibilités</Typography>
-            <TableContainer mt={5} >
-                <TableHead>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Heure début</TableCell>
-                    <TableCell>Heure fin</TableCell>
-                </TableHead>
-                <TableBody>
-                {sortedDispos.map((dispo, index) => {
-                    return (
-                        <TableRow key={index}>
-                            <TableCell>{days[dispo.date.getDay()]} {dispo.date.getDate()} {months[dispo.date.getMonth()]}</TableCell>
-                            <TableCell>{dispo.start}</TableCell>
-                            <TableCell>{dispo.end}</TableCell>
+        <>
+            <Typography mb={5} variant={"h5"}>Vos disponibilités</Typography>
+            <TableContainer>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Date</TableCell>
+                            <TableCell>Heure début</TableCell>
+                            <TableCell>Heure fin</TableCell>
                         </TableRow>
-                    )
-                })}
-                </TableBody>
+                    </TableHead>
+                    <TableBody>
+                        {sortedDispos.map((dispo, index) => {
+                            return (
+                                <TableRow key={index}>
+                                    <TableCell>{days[dispo.date.getDay()]} {dispo.date.getDate()} {months[dispo.date.getMonth()]}</TableCell>
+                                    <TableCell>{dispo.start}</TableCell>
+                                    <TableCell>{dispo.end}</TableCell>
+                                </TableRow>
+                            )
+                        })}
+                    </TableBody>
+                </Table>
             </TableContainer>
-        </div>
+        </>
     )
 }
 

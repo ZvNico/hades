@@ -10,7 +10,7 @@ const Sidebar = ({open, drawerWidth}) => {
             {"label": "Vos disponibilités", link: "hades/see-dispos", icon: <CalendarMonth/>},
             {"label": "Vos rendez-vous", link: "hades/see-rdv", icon: <WatchLater/>}]
         : [{"label": "Choisir rendez-vous", link: "hades/choose-rdv", icon: <Event/>},
-            {"label": "Votre rendez-vous", link: "hades/choose-rdv", icon: <WatchLater/>}]
+            {"label": "Votre rendez-vous", link: "hades/see-rdv", icon: <WatchLater/>}]
     return (
         <Drawer
             sx={{

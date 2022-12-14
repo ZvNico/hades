@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {Alert, Button, Snackbar, Stack, TextField, Typography} from "@mui/material";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addDispo} from "../redux/slices/dispo";
 
 const AddDispo = () => {
@@ -8,9 +8,10 @@ const AddDispo = () => {
     const [start, setStart] = useState("09:00");
     const [end, setEnd] = useState("18:00");
     const [open, setOpen] = useState(false);
+    const profile = useSelector(state => state.profile)
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
-        dispatch(addDispo({date: date, start: start, end: end}));
+        dispatch(addDispo({date: date, start: start, end: end, examinerId: profile.id}));
         setOpen(true)
         reset();
     }
@@ -26,7 +27,6 @@ const AddDispo = () => {
     }, [])
     return (
         <>
-            <div>
                 <Typography variant={"h5"}>Ajouter une disponibilité</Typography>
                 <Stack mt={5} spacing={4}>
                     <TextField type={"date"}
@@ -49,7 +49,6 @@ const AddDispo = () => {
                         ajouter
                     </Button>
                 </Stack>
-            </div>
             <Snackbar autoHideDuration={5000} open={open}
                       onClose={() => setOpen(false)}>
                 <Alert onClose={() => setOpen(false)} severity="success" sx={{width: '100%'}}>

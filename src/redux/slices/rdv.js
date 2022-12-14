@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {salles} from "../../consts";
 
 const initialState = []
 const rdvSlice = createSlice({
@@ -6,7 +7,7 @@ const rdvSlice = createSlice({
     initialState,
     reducers: {
         addRDV: (state, rdv) => {
-            state.push(rdv.payload)
+            state.push({...rdv.payload, salle: salles[Math.floor(Math.random() * salles.length)]})
         },
     }
 
